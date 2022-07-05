@@ -8,6 +8,7 @@ import java.util.Objects;
 /**
  * CustomStackUsingArrayList : CSUA
  */
+//2022.07.05
 public class CustomStackUsingArrayList<E> {
 
     public CustomArrayListToCSUA<E> arrayStack = new CustomArrayListToCSUA<>();

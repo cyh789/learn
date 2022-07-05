@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
 
+//2022.07.05
 public class CustomDoublyLinkedList<T> {
 
     private int size;
