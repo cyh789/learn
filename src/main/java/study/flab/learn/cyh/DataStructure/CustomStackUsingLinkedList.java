@@ -307,14 +307,12 @@ class CustomLinkedListToCSUL<E> {
 
     public String toString() {
         StringBuilder sum = new StringBuilder();
-        //Sentinel
         CustomNodeToCSUL<E> currNode = head.nextNode;
         for (int i = 0; i < size; i++) {
             sum.append(currNode.data);
             if (i < size - 1) {
                 sum.append(",");
             }
-            //Sentinel
             if (currNode.nextNode == tail) {
                 continue;
             }
