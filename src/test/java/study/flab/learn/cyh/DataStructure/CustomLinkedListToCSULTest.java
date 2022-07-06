@@ -8,16 +8,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CustomDoublyLinkedListTest {
+class CustomLinkedListToCSULTest {
 
-    private CustomDoublyLinkedList customLinkedList;
+    private CustomLinkedListToCSUL customLinkedList;
     private List javaLinkedList;
 
 
     @BeforeEach
     void setUp() {
         javaLinkedList = new LinkedList();
-        customLinkedList = new CustomDoublyLinkedList();
+        customLinkedList = new CustomLinkedListToCSUL();
 
     }
 
@@ -85,6 +85,7 @@ class CustomDoublyLinkedListTest {
         javaLinkedList.add("3");
 
         customLinkedList.addAll(2, javaLinkedList);
+
         assertThat(customLinkedList.toString()).isEqualTo("1,2,3,4");
     }
 
@@ -188,9 +189,14 @@ class CustomDoublyLinkedListTest {
         customLinkedList.add("1");
         customLinkedList.add("2");
 
-        assertThat(customLinkedList.peek()).isEqualTo("1");
-        assertThat(customLinkedList.peekFirst()).isEqualTo("1");
-        assertThat(customLinkedList.peekLast()).isEqualTo("2");
+        String sMsg = "2";
+        assertThat(customLinkedList.peek()).isEqualTo(sMsg);
+
+        sMsg = "1";
+        assertThat(customLinkedList.peekFirst()).isEqualTo(sMsg);
+
+        sMsg = "2";
+        assertThat(customLinkedList.peekLast()).isEqualTo(sMsg);
     }
 
     @Test
@@ -205,38 +211,37 @@ class CustomDoublyLinkedListTest {
 
     @Test
     void removeTotalTest() {
-//        javaLinkedList.add("1");
-//        javaLinkedList.add("2");
-//        javaLinkedList.add("3");
-//        javaLinkedList.add("4");
-//        javaLinkedList.add("5");
-//        System.out.println(javaLinkedList.remove(0));
-//        System.out.println(javaLinkedList.toString());
-//        assertThat(javaLinkedList.toString()).isEqualTo("[2, 3, 4, 5]");
+        javaLinkedList.add("1");
+        javaLinkedList.add("2");
+        javaLinkedList.add("3");
+        javaLinkedList.add("4");
+        javaLinkedList.add("5");
+        String sMsg = "1";
+        assertThat(javaLinkedList.remove(0)).isEqualTo(sMsg);
+        sMsg = "[2, 3, 4, 5]";
+        assertThat(javaLinkedList.toString()).isEqualTo(sMsg);
 
-//        System.out.println(customLinkedList.remove(0));
-//        assertThat(customLinkedList.toString()).isEqualTo("2,3,4,5");
-//        System.out.println(customLinkedList.removeFirst());
-//        assertThat(customLinkedList.toString()).isEqualTo("3,4,5");
-//        System.out.println(customLinkedList.removeLast());
-//        assertThat(customLinkedList.toString()).isEqualTo("3,4");
-//        System.out.println(customLinkedList.remove("4"));
-//        assertThat(customLinkedList.toString()).isEqualTo("3");
 
         customLinkedList.add("1");
         customLinkedList.add("2");
         customLinkedList.add("3");
         customLinkedList.add("4");
         customLinkedList.add("5");
-        customLinkedList.remove(0);
-        assertThat(customLinkedList.toString()).isEqualTo("2,3,4,5");
-        customLinkedList.removeFirst();
-//        System.out.println(customLinkedList.toString());
-        assertThat(customLinkedList.toString()).isEqualTo("3,4,5");
-        customLinkedList.removeLast();
-//        System.out.println(customLinkedList.toString());
-        assertThat(customLinkedList.toString()).isEqualTo("3,4");
-        customLinkedList.remove("4");
+        sMsg = "1";
+        assertThat(customLinkedList.remove(0)).isEqualTo(sMsg);
+        sMsg = "2,3,4,5";
+        assertThat(customLinkedList.toString()).isEqualTo(sMsg);
+
+        assertThat(customLinkedList.removeFirst()).isTrue();
+        sMsg = "3,4,5";
+        assertThat(customLinkedList.toString()).isEqualTo(sMsg);
+
+        assertThat(customLinkedList.removeLast()).isTrue();
+        sMsg = "3,4";
+        assertThat(customLinkedList.toString()).isEqualTo(sMsg);
+
+        assertThat(customLinkedList.remove("4")).isTrue();
+        sMsg = "3";
         assertThat(customLinkedList.toString()).isEqualTo("3");
     }
 
@@ -244,8 +249,8 @@ class CustomDoublyLinkedListTest {
     void pop() {
         customLinkedList.add("1");
         customLinkedList.add("2");
-        assertThat(customLinkedList.pop()).isEqualTo("1");
-        assertThat(customLinkedList.toString()).isEqualTo("2");
+        assertThat(customLinkedList.pop()).isEqualTo("2");
+        assertThat(customLinkedList.toString()).isEqualTo("1");
     }
 
     @Test
@@ -253,7 +258,7 @@ class CustomDoublyLinkedListTest {
         customLinkedList.add("1");
         customLinkedList.add("2");
         customLinkedList.push("3");
-        assertThat(customLinkedList.toString()).isEqualTo("3,1,2");
+        assertThat(customLinkedList.toString()).isEqualTo("1,2,3");
     }
 
     @Test
@@ -285,10 +290,14 @@ class CustomDoublyLinkedListTest {
         customLinkedList.add("2");
 
         javaLinkedList = customLinkedList.subList(0, 2);
-        Object[] sArr = javaLinkedList.toArray();
-        for (int i = 0; i < sArr.length; i++) {
-            assertThat(sArr[i].toString()).isEqualTo(customLinkedList.get(i).toString());
+        int i= 0;
+        for (Object o : javaLinkedList) {
+            assertThat(o.toString()).isEqualTo(customLinkedList.get(i++).toString());
         }
+//        Object[] sArr = javaLinkedList.toArray();
+//        for (int i = 0; i < sArr.length; i++) {
+//            assertThat(sArr[i].toString()).isEqualTo(customLinkedList.get(i).toString());
+//        }
     }
 
 }
