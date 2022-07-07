@@ -20,9 +20,5 @@ class LearnApplicationTests {
 		Stack stack3 = new Stack();
 	}
 
-	@Test
-	void test2() {
-		//rebase test
-	}
 
 }
