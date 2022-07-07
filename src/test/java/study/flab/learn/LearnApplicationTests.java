@@ -18,6 +18,10 @@ class LearnApplicationTests {
 		List stack = new Vector();
 		List stack2 = new Stack();
 		Stack stack3 = new Stack();
+
+		stack.isEmpty();
+		stack2.isEmpty();
+		stack3.isEmpty();
 	}
 
 
