@@ -2,7 +2,8 @@ package study.flab.learn.cyh.DataStructure;
 
 public class CustomQueueUsingArrayList<E> {
 
-    public CustomArrayListToCSUA<E> arrayQueue = new CustomArrayListToCSUA<>();
+//    public CustomArrayListToCSUA<E> arrayQueue = new CustomArrayListToCSUA<>();
+    public CustomArrayListToCQUA<E> arrayQueue = new CustomArrayListToCQUA<>();
 
     //O(1)
     public boolean isEmpty() {
@@ -12,11 +13,9 @@ public class CustomQueueUsingArrayList<E> {
     public void enqueue(E e) {
         arrayQueue.add(e);
     }
-    //O(n)
+    //O(1)
     public E dequeue() {
-        E strRtn = arrayQueue.get(0);
-        arrayQueue.remove(0);
-        return strRtn;
+        return arrayQueue.remove(0);
     }
     //O(1)
     public E peek() {
