@@ -88,4 +88,64 @@ class CustomQueueUsingArrayListTest {
         sMsg = "1번";
         assertThat(cQueue.peek().toString().replaceAll(" ","")).contains(sMsg);
     }
+
+    @Test
+    void totalTest_1() {
+        assertThat(sQueue.isEmpty()).isTrue();
+
+        cQueue.enqueue("1번");
+        sMsg = "[1번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+        sMsg = "1번";
+        assertThat(cQueue.peek().toString().replaceAll(" ","")).contains(sMsg);
+
+
+        cQueue.enqueue("2번"); cQueue.enqueue("3번"); cQueue.enqueue("4번");
+        sMsg = "[1번,2번,3번,4번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+        sMsg = "1번";
+        assertThat(cQueue.peek().toString().replaceAll(" ","")).contains(sMsg);
+
+
+        sMsg = "1번";
+        assertThat(cQueue.dequeue().toString().replaceAll(" ","")).contains(sMsg);
+        sMsg = "[2번,3번,4번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+        sMsg = "2번";
+        assertThat(cQueue.dequeue().toString().replaceAll(" ","")).contains(sMsg);
+        sMsg = "[3번,4번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+
+
+        cQueue.enqueue("5번");
+        cQueue.enqueue("6번"); cQueue.enqueue("7번");
+        cQueue.enqueue("8번"); cQueue.enqueue("9번");
+        cQueue.enqueue("10번");
+        sMsg = "[3번,4번,5번,6번,7번,8번,9번,10번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+
+
+        cQueue.enqueue("11번");
+        sMsg = "[11번,3번,4번,5번,6번,7번,8번,9번,10번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+
+
+        cQueue.enqueue("12번");
+        sMsg = "[11번,12번,3번,4번,5번,6번,7번,8번,9번,10번]";
+        assertThat(cQueue.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
+    }
 }

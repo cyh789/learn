@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomArrayListToCQUATest {
@@ -26,26 +28,17 @@ class CustomArrayListToCQUATest {
         cList.add("1번");
         cList.add("2번");
         cList.add("3번");
-        String sMsg = "1번,2번,3번";
-        Assertions.assertThat(cList.toString()).isEqualTo(sMsg);
+        String sMsg = "[1번,2번,3번]";
+        assertThat(cList.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
 
         sMsg = "1번";
-        Assertions.assertThat(cList.removeFirst().toString()).isEqualTo(sMsg);
-        sMsg = "2번,3번";
-        Assertions.assertThat(cList.toString()).isEqualTo(sMsg);
+        assertThat(cList.removeFirst().toString()).isEqualTo(sMsg);
+        sMsg = "[2번,3번]";
+        assertThat(cList.toString().replaceAll(", null","")
+                .replaceAll("null,","")
+                .replaceAll(" ","")).isEqualTo(sMsg);
     }
 
-    @Test
-    void removeLast() {
-        cList.add("1번");
-        cList.add("2번");
-        cList.add("3번");
-        String sMsg = "1번,2번,3번";
-        Assertions.assertThat(cList.toString()).isEqualTo(sMsg);
-
-        sMsg = "3번";
-        Assertions.assertThat(cList.removeLast().toString()).isEqualTo(sMsg);
-        sMsg = "1번,2번";
-        Assertions.assertThat(cList.toString()).isEqualTo(sMsg);
-    }
 }

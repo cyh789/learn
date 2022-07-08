@@ -1,5 +1,7 @@
 package study.flab.learn.cyh.DataStructure;
 
+import java.util.Arrays;
+
 public class CustomQueueUsingArrayList<E> {
 
 //    public CustomArrayListToCSUA<E> arrayQueue = new CustomArrayListToCSUA<>();
@@ -15,15 +17,15 @@ public class CustomQueueUsingArrayList<E> {
     }
     //O(1)
     public E dequeue() {
-        return arrayQueue.remove(0);
+        return arrayQueue.removeFirst();
     }
     //O(1)
     public E peek() {
-        return arrayQueue.get(0);
+        return arrayQueue.getHead();
     }
 
     @Override
     public String toString() {
-        return "[" + arrayQueue + "]";
+        return arrayQueue.toString();
     }
 }
